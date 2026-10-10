@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>像素足球 Pixel Soccer</title>
+<meta name="description" content="An automatic pixel soccer simulation: 11v11 and youth 9v9, 7v7, 6v6 and 5v5, named tactics drawn on a playbook, and four super players.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23fff' stroke='%23202020'/%3E%3Cpath d='M8 4.5l3 2.2-1.1 3.5H6.1L5 6.7z' fill='%23202020'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+<div id="app">
+  <header class="panel bar">
+    <h1>⚽ <span data-t="title"></span><small data-t="subtitle"></small></h1>
+    <label><span data-t="format"></span>
+      <select id="fmt"><option value="11v11">11v11</option><option value="9v9">9v9</option><option value="7v7">7v7</option><option value="6v6">6v6</option><option value="5v5">5v5</option></select>
+    </label>
+    <button id="play" class="big"></button>
+    <label><span data-t="speed"></span>
+      <select id="speed"><option value="2">2x</option><option value="4">4x</option><option value="8" selected>8x</option><option value="16">16x</option><option value="32">32x</option><option value="60">60x</option></select>
+    </label>
+    <button id="sim"></button>
+    <button id="next" disabled></button>
+    <span class="grow"></span>
+    <button id="fx"></button>
+    <button id="lang"></button>
+    <button id="newTeams"></button>
+  </header>
+
+  <section class="panel scoreboard" id="board"></section>
+
+  <div class="main">
+    <section class="panel courtwrap">
+      <canvas id="court" width="1280" height="800"></canvas>
+    </section>
+    <aside class="side">
+      <div class="cards">
+        <div class="panel card" id="cardO"></div>
+        <div class="panel card" id="cardD"></div>
+      </div>
+      <div class="panel playbook">
+        <div class="pbhead" data-t="playbook"></div>
+        <canvas id="pbBoard" width="520" height="340"></canvas>
+        <h3 id="pbName">—</h3><p id="pbDesc"></p><div id="pbForm"></div>
+        <p class="pblegend" data-t="pbLegend"></p>
+      </div>
+      <div class="panel tabsbox">
+        <div class="tabs">
+          <button data-tab="log" class="on" data-t="tabLog"></button>
+          <button data-tab="box" data-t="tabBox"></button>
+          <button data-tab="roster" data-t="tabRoster"></button>
+          <button data-tab="rules" data-t="tabRules"></button>
+        </div>
+        <div class="pane on" id="pane-log"><ol id="log"></ol></div>
+        <div class="pane" id="pane-box"></div>
+        <div class="pane" id="pane-roster"></div>
+        <div class="pane" id="pane-rules"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+<script src="engine.js?v=1"></script>
+<script src="game.js?v=1"></script>
+<script src="/hub.js" data-pos="bottom-right" defer></script>
+</body>
+</html>
