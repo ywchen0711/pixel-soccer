@@ -71,7 +71,7 @@ const RULES = {
   }
 };
 let lang = 'zh';
-try { const l = localStorage.getItem('soccer.lang'); if (l === 'en' || l === 'zh') lang = l; else if (!/^zh/i.test(navigator.language || 'zh')) lang = 'en'; } catch (e) { /* private mode */ }
+try { const q = (typeof location !== 'undefined' && (location.search.match(/[?&]lang=(zh|en)(?![a-z])/) || [])[1]); if (q) localStorage.setItem('soccer.lang', q); const l = q || localStorage.getItem('soccer.lang'); if (l === 'en' || l === 'zh') lang = l; else if (!/^zh/i.test(navigator.language || 'zh')) lang = 'en'; } catch (e) { /* private mode */ }
 const T = k => TX[lang][k];
 const nm = p => (p.name[lang] || p.name.zh);
 const tn = t => (t.city[lang] || t.city.zh) + (lang === 'en' ? ' ' : '') + (t.name[lang] || t.name.zh);
